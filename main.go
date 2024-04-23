@@ -1,8 +1,8 @@
 package main
 
 import (
+	"flag"
 	"fmt"
-
 	"github.com/deso-protocol/core/bls"
 	"github.com/deso-protocol/core/lib"
 )
@@ -19,14 +19,30 @@ func getBLSVotingAuthorizationAndPublicKey(blsKeyStore *lib.BLSKeystore, transac
 }
 
 func main() {
-	// Replace with your own BIP39 Validator seed phrase
-	keystore, err := lib.NewBLSKeystore("category ignore around vibrant delay cargo apart truly rabbit blue master cash")
+
+	flagBLSSeedPhrase := flag.String("bls-seed-phrase",
+		"", "A 12-word BIP39 seed phrase to use to generate a BLS key pair for your validator.")
+	flagDeSoPublicKey := flag.String("deso-public-key",
+		"", "The DeSo public key you will be using for your validator.")
+	flag.Parse()
+
+	if flagBLSSeedPhrase == nil || *flagBLSSeedPhrase == "" {
+		panic("Please provide a BLS seed phrase.")
+	}
+
+	if flagDeSoPublicKey == nil || *flagDeSoPublicKey == "" {
+		panic("Please provide a DeSo public key.")
+	}
+
+	// Parse BIP39 Validator seed phrase
+	// E.g. "category ignore around vibrant delay cargo apart truly rabbit blue master cash"
+	keystore, err := lib.NewBLSKeystore(*flagBLSSeedPhrase)
 	if err != nil {
 		panic(err)
 	}
-	// Replace with  your DeSo Public Key
-	// tBCKWZLt6BtJNRzs4qT8DWUY7BCoMUQVFp86HwQJ4RAqNxjwisrK74
-	pubKeyBytes, _, err := lib.Base58CheckDecode("BC1YLhS6ruuvtGX58AG8gAvEjhsBR2xdZB54AaGUZ43MnS3nWcm5RYx")
+	// Parse your DeSo Public Key
+	// E.g. BC1YLhS6ruuvtGX58AG8gAvEjhsBR2xdZB54AaGUZ43MnS3nWcm5RYx
+	pubKeyBytes, _, err := lib.Base58CheckDecode(*flagDeSoPublicKey)
 	if err != nil {
 		panic(err)
 	}
