@@ -1,21 +1,18 @@
 module validator-key-generator
 
-go 1.20
+go 1.22.2
 
 replace github.com/deso-protocol/core => github.com/deso-protocol/core v1.2.10-0.20240419184731-9a56c6077544
 
 require github.com/deso-protocol/core v0.0.0-00010101000000-000000000000
 
 require (
-	github.com/btcsuite/btcd/btcec/v2 v2.3.3 // indirect
-	github.com/btcsuite/btcd/btcutil v1.1.5 // indirect
-	github.com/btcsuite/btcd/chaincfg/chainhash v1.1.0 // indirect
-)
-
-require (
 	github.com/DataDog/datadog-go v4.8.3+incompatible // indirect
 	github.com/Microsoft/go-winio v0.6.1 // indirect
 	github.com/btcsuite/btcd v0.24.0 // indirect
+	github.com/btcsuite/btcd/btcec/v2 v2.3.3 // indirect
+	github.com/btcsuite/btcd/btcutil v1.1.5 // indirect
+	github.com/btcsuite/btcd/chaincfg/chainhash v1.1.0 // indirect
 	github.com/btcsuite/btclog v0.0.0-20170628155309-84c8d2346e9f // indirect
 	github.com/bwesterb/go-ristretto v1.2.3 // indirect
 	github.com/cespare/xxhash/v2 v2.3.0 // indirect
@@ -47,6 +44,7 @@ require (
 	github.com/holiman/uint256 v1.2.4 // indirect
 	github.com/jinzhu/inflection v1.0.0 // indirect
 	github.com/klauspost/compress v1.17.8 // indirect
+	github.com/kr/text v0.2.0 // indirect
 	github.com/magiconair/properties v1.8.7 // indirect
 	github.com/mattn/go-colorable v0.1.13 // indirect
 	github.com/mattn/go-isatty v0.0.20 // indirect
